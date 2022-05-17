@@ -1,0 +1,12 @@
+{% extends 'search/base.html' %}
+
+
+{% block title %}Результаты поиска{% endblock %}
+
+{% block content %}
+    <div class='wrapper'>
+        {% for v in items %}
+            <p><a href="{% url 'videocart_detail' v.title %}"><h1>{{ v.title }}</h1></a></p>
+        {% endfor %}
+    </div>
+{% endblock %}

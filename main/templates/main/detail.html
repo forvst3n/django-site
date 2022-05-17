@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}{{ item.title }}{% endblock %}
+
+{% block content %}
+    <div class='wrapper'>
+        <div class='videocart wrapper'>
+            <div class='videocart title container'>
+                <h1>{{ item.title }}</h1>
+            </div>     
+            <div class='videocart description container'>
+                <h2>{{ item.description }}</h2>
+            </div>  
+            <div class='videocart memory container'>
+                <h3>{{ item.memory }}</h3>
+            </div>  
+            <div class='videocart technicalprocces container'>
+                <h4>{{ item.technical_process }}</h4>
+            </div>   
+            <div class='videocart date_created container'>
+                <h4>{{ item.date }}</h4>
+            </div>      
+        </div>
+        <div class='comment wrapper'>
+            <div class='comment form'>
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                        <p>{{ field }}</p>
+                    {% endfor %}
+                    <button>Send</button>
+                </form>
+            </div>
+            <div class='comment container'>
+                <div class='comments'>
+                    {% for comment in comments %}
+                        <h1><strong>{{ comment.author }}</strong></h1>
+                        <h2>{{ comment.content }}</h2>
+                        <h3>{{ comment.date }}</h3>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

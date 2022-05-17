@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <div class='wrapper'>
+        <div class='search wrapper'>
+            <form action="{% url 'search' %}">
+                <input required type="search" name="q" placeholder="search">
+                <button>go</button>
+            </form>
+        </div>
+        <div class='videocart wrapper'>
+            <div class='videocart title container'>
+                {% for v in items %}
+                    <p><a href="{% url 'videocart_detail' v.title %}"><h2>{{ v.title }}</h2></a></p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
